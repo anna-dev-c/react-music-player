@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  max-width: 80%;
+  margin: 30px auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+.play-all-btn,
+.add-all-btn,
+.track-num,
+.search-btn {
+  display: inline-flex;
+  margin: 5px;
+}
+
+.play-all,
+.add-all {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid #666;
+  padding: 6px 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.play-icon,
+.add-icon,
+.track-icon,
+.search-icon {
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+
+}
+
+.chevron-down {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-align: center;
+  border: 1px solid #666;
+  border-radius: 0 6px 6px 0;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.track-num,
+.search-btn {
+  align-items: center;
+  max-width: 270px;
+  justify-content: space-between;
+  padding: 6px 16px;
+  border: 1px solid #666;
+  border-radius: 6px;
+  color: #333;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.chevron-down-track {
+  color: #333;
+  cursor: pointer;
+}
+
+.search-btn {
+  border-radius: 22px;
+}
+
+.search-btn input[type=search] {
+  background-color: #eee;
+  border: none;
+  outline: none;
+}
+
+table {
+  font-family: arial, sans-serif;
+  width: 100%;
+}
+
+thead {
+  background-color: #eee;
+  color: #8A888F;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding: 6px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666666;
+}
+
+tr:hover {
+  background-color: #eee;
+}
+
+.music-upload-form {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.music-upload-btn,
+.choose-file {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #666;
+  padding: 12px 36px;
+  cursor: pointer;
+  color: #333;
+  background-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.music-upload-btn:hover {
+  background-color: #333;
+  color: #eee;
+}
+
+.music-upload-btn:disabled,
+.my-button:disabled:hover {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+.selected-file {
+  padding: 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.music-upload-form input[type=file] {
+  cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+
+
+  .header {
+    display: block
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+
+  .header {
+    display: inline-block;
+  }
+
+  table {
+    display: inline-grid;
   }
 }
