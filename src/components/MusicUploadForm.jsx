@@ -5,7 +5,6 @@ function MusicUploadForm({ setSongs }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(false);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -13,11 +12,6 @@ function MusicUploadForm({ setSongs }) {
   };
 
   const handleUpload = () => {
-    if (isUploaded) {
-      alert('File has already been uploaded!');
-      return;
-    }
-
     setIsUploading(true);
 
     // Mock upload progress
@@ -26,7 +20,6 @@ function MusicUploadForm({ setSongs }) {
         if (prevProgress === 100) {
           clearInterval(interval);
           setIsUploading(false);
-          setIsUploaded(true);
 
           return 100;
         }
@@ -56,11 +49,16 @@ function MusicUploadForm({ setSongs }) {
       </div>
       <div className="selected-file">{selectedFile && <div>File selected: {selectedFile.name}</div>}</div>
 
+      {isUploading && (
+        <div className="loading">
+          <p>Uploading: {uploadProgress}% </p>
+          <div className="loader"></div>
+        </div>
+      )}
       <button className="music-upload-btn" onClick={handleUpload} disabled={!selectedFile || isUploading}>
         <UploadCloud />
         Upload
       </button>
-      {isUploading && <div>Uploading: {uploadProgress}% </div>}
     </div>
   );
 }
