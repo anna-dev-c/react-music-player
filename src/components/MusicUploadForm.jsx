@@ -52,7 +52,6 @@ function MusicUploadForm({ setSongs }) {
         file: '',
       },
     ]);
-    console.log('🚀 ~ selectedFile:', selectedFile);
   };
 
   return (
@@ -85,8 +84,8 @@ function MusicUploadForm({ setSongs }) {
       <button
         className="music-upload-btn"
         onClick={handleUpload}
-        disabled={!selectedFile || isUploading}
-        aria-disabled={!selectedFile || isUploading}
+        disabled={!selectedFile || isUploading || uploadError}
+        aria-disabled={!selectedFile || isUploading || uploadError}
       >
         <UploadCloud />
         Upload
