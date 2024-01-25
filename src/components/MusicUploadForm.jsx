@@ -5,16 +5,29 @@ function MusicUploadForm({ setSongs }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    if (file && !file.type.startsWith('audio/')) {
+      setUploadError('Please, upload only audio file types!');
+      return;
+    }
+
+    setSelectedFile(file);
     setUploadProgress(0);
+    setUploadError(null);
   };
 
   const handleUpload = () => {
-    setIsUploading(true);
+    if (uploadError) {
+      return;
+    }
 
-    // Mock upload progress
+    setIsUploading(true);
+    setUploadError(null);
+
+    //  Mock upload progress
     const interval = setInterval(() => {
       setUploadProgress((prevProgress) => {
         if (prevProgress === 100) {
@@ -43,19 +56,38 @@ function MusicUploadForm({ setSongs }) {
   };
 
   return (
-    <div className="music-upload-form">
+    <div className="music-upload-form" role="form" aria-labelledby="music-upload-form-title">
       <div className="choose-file">
-        <input type="file" accept=".mp3, .wav, audio/*" onChange={handleFileChange} />
+        <input
+          id="file-upload"
+          type="file"
+          accept=".mp3, .wav, audio/*"
+          onChange={handleFileChange}
+          aria-describedby="file-upload-description"
+        />
+
+        <div id="file-upload-description" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+          File types accepted: MP3, WAV, and other audio formats
+        </div>
       </div>
+
       <div className="selected-file">{selectedFile && <div>File selected: {selectedFile.name}</div>}</div>
 
       {isUploading && (
-        <div className="loading">
+        <div className="loading" aria-live="polite" aria-busy="true">
           <p>Uploading: {uploadProgress}% </p>
           <div className="loader"></div>
         </div>
       )}
-      <button className="music-upload-btn" onClick={handleUpload} disabled={!selectedFile || isUploading}>
+
+      {uploadError && <div className="upload-error">{uploadError}</div>}
+
+      <button
+        className="music-upload-btn"
+        onClick={handleUpload}
+        disabled={!selectedFile || isUploading}
+        aria-disabled={!selectedFile || isUploading}
+      >
         <UploadCloud />
         Upload
       </button>

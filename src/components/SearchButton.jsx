@@ -5,7 +5,7 @@ const SearchButton = () => {
   return (
     <button className="search-btn">
       <Search className="search-icon" />
-      <input type="search" id="search" placeholder="Filter" />
+      <input id="search" type="search" placeholder="Filter" aria-label="Search or filter results" />
     </button>
   );
 };

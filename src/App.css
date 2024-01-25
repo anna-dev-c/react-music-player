@@ -1,3 +1,5 @@
+/* Global CSS */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,6 +10,8 @@
   max-width: 80%;
   margin: 30px auto;
 }
+
+/* Header styles */
 
 .header {
   background-color: #eee;
@@ -88,6 +92,8 @@
   outline: none;
 }
 
+/* SongList styles */
+
 table {
   font-family: arial, sans-serif;
   width: 100%;
@@ -112,6 +118,7 @@ tr:hover {
   background-color: #eee;
 }
 
+/* MusicUploadForm styles */
 .music-upload-form {
   background-color: #eee;
   border: 1px solid #ddd;
@@ -162,25 +169,6 @@ tr:hover {
   cursor: pointer;
 }
 
-@media (max-width: 1280px) {
-
-
-  .header {
-    display: block
-  }
-}
-
-@media (max-width: 480px) {
-
-  .header {
-    display: inline-block;
-  }
-
-  table {
-    display: inline-grid;
-  }
-}
-
 .loading {
   display: flex;
   align-items: center;
@@ -198,7 +186,6 @@ tr:hover {
   animation: spin 2s linear infinite;
 }
 
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -206,5 +193,28 @@ tr:hover {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.upload-error {
+  margin-bottom: 10px;
+  color: red;
+}
+
+/* Media queries' styles */
+
+@media (max-width: 1280px) {
+  .header {
+    display: block
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    display: inline-block;
+  }
+
+  table {
+    display: inline-grid;
   }
 }

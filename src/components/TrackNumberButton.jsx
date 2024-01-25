@@ -6,7 +6,7 @@ import { Fragment } from 'react';
 const TrackNumberButton = () => {
   return (
     <>
-      <div className="track-num">
+      <div className="track-num" role="button" aria-label="Sort by Track Number">
         <ArrowDownUp className="track-icon" />
         Track Number
         <ChevronDown className="chevron-down-track" />

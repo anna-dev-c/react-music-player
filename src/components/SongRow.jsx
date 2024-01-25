@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react';
 
 const SongRow = ({ songs }) => {
   return (
-    <table>
+    <table aria-label="Songs Table">
       <thead>
         <tr>
           <th></th>
@@ -25,18 +25,18 @@ const SongRow = ({ songs }) => {
           <tr key={song.trackNumber}>
             {/* Each row has a unique 'key' prop */}
             <td>
-              <Grip style={{ marginRight: '10px' }} />
-              <Play fill={'#666666'} />
+              <Grip aria-hidden="true" style={{ marginRight: '10px' }} />
+              <Play aria-hidden="true" fill={'#666666'} />
             </td>
             <td>{song.songName}</td>
             <td>{song.artistName}</td>
             <td>{song.trackNumber}</td>
             <td>
               {/* Icons for various actions with styling */}
-              <Heart style={{ marginRight: '10px' }} fill={'#666666'} />
-              <Check style={{ marginRight: '10px' }} />
-              <Forward style={{ marginRight: '10px' }} />
-              <ChevronDown fill={'#666666'} />
+              <Heart aria-hidden="true" style={{ marginRight: '10px' }} fill={'#666666'} />
+              <Check aria-hidden="true" style={{ marginRight: '10px' }} />
+              <Forward aria-hidden="true" style={{ marginRight: '10px' }} />
+              <ChevronDown aria-hidden="true" fill={'#666666'} />
             </td>
           </tr>
         ))}
